@@ -16,16 +16,34 @@
     </div>
   </div>
   <div class="schedule-card">
-    <div class="schedule-header">
-      <span class="header-icon">🔥</span>
-      <span class="header-text">ONLY 3 UNITS LEFT! Book now & get priority viewing + waived application fee!</span>
+    <div class="marketing-box">
+      <span class="marketing-icon">🔥</span>
+      <span class="marketing-title">ONLY 3 UNITS LEFT!</span>
+      <div class="marketing-desc">Book now & get <span class="highlight">priority viewing</span> + <span class="highlight">waived application fee</span>!</div>
     </div>
     <div class="schedule-body">
       <div class="earliest-label">🟢 Earliest Available</div>
-      <div class="schedule-date">Wednesday, July 23, 2025</div>
-      <div class="timezone">Time Zone: EDT <span class="show-more">Show More Dates</span></div>
+      <div class="schedule-date">{{ formattedDate }}</div>
+      <div class="date-selector">
+        <span *ngFor="let date of futureDates" class="date-btn" [class.selected]="selectedDate.getTime() === date.getTime()" (click)="selectDate(date)">
+          {{ date | date:'EEE, MMM d' }}
+        </span>
+        <button class="show-more-date-btn" (click)="openDatePicker()">Show More Dates</button>
+        <input *ngIf="showDatePicker" type="date" class="date-picker" (change)="onDatePicked($event)" [min]="today | date:'yyyy-MM-dd'" />
+      </div>
       <div class="slots-grid">
-        <button *ngFor="let slot of schedule?.slots" class="slot-btn" [class.selected]="selectedSlot === slot" (click)="selectSlot(slot)">{{ slot }}</button>
+        <button *ngFor="let slot of slots" class="slot-btn" [class.early]="slot === '9:00 AM' || slot === '10:00 AM' || slot === '11:00 AM'" [class.selected]="selectedSlot === slot" [class.disabled]="isSlotDisabled(slot)" (click)="selectSlot(slot)" [disabled]="isSlotDisabled(slot)">
+          <span [class.strikeout]="isSlotDisabled(slot)">{{ slot }}</span>
+          <span *ngIf="slot === '9:00 AM' || slot === '10:00 AM' || slot === '11:00 AM'" class="badge">⭐ Best</span>
+          <span *ngIf="slotAvailability[slot]" class="slot-left">{{ slotAvailability[slot] }} left</span>
+        </button>
+      </div>
+      <div *ngIf="selectedSlot" class="confirmation-box">
+        <span class="confirmation-title">Selected: {{ formattedDate }} at {{ selectedSlot }}</span>
+      </div>
+      <div *ngIf="selectedSlot" class="smart-choice">
+        <span class="smart-icon">💡</span>
+        <span class="smart-text">Smart Choice! Morning slots get priority scheduling and our best agents.</span>
       </div>
       <button class="schedule-btn">SCHEDULE NOW <span class="arrow">→</span></button>
     </div>
