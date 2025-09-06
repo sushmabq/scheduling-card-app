@@ -1,0 +1,159 @@
+// Figma-inspired styles
+.scheduling-wrapper {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+  background: linear-gradient(120deg, #eaf6fb 0%, #e6f0ea 100%);
+  min-height: 100vh;
+  padding: 40px 0;
+}
+
+.property-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 24px;
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.property-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+.property-info {
+  width: 100%;
+}
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: #1976d2;
+  margin-bottom: 4px;
+}
+.label {
+  font-weight: 500;
+}
+.info-value {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+hr {
+  border: none;
+  border-top: 1px dashed #e0e0e0;
+  margin: 12px 0;
+}
+.schedule-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 24px 32px 32px 32px;
+  width: 520px;
+  display: flex;
+  flex-direction: column;
+}
+.schedule-header {
+  background: linear-gradient(90deg, #e3f0ff 0%, #f3f8ff 100%);
+  border-radius: 12px 12px 0 0;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: #1976d2;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+.header-icon {
+  font-size: 18px;
+}
+.schedule-body {
+  padding: 0 8px;
+}
+.earliest-label {
+  color: #43a047;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.schedule-date {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.timezone {
+  font-size: 14px;
+  color: #757575;
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.show-more {
+  color: #1976d2;
+  font-weight: 600;
+  cursor: pointer;
+}
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.slot-btn {
+  background: #f5f7fa;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 14px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #222;
+  cursor: pointer;
+  transition: border 0.2s, background 0.2s, color 0.2s;
+}
+.slot-btn.selected {
+  background: #e3f0ff;
+  border-color: #1976d2;
+  color: #1976d2;
+}
+.schedule-btn {
+  background: linear-gradient(90deg, #1976d2 0%, #1de9b6 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  border-radius: 24px;
+  padding: 12px 32px;
+  align-self: flex-end;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+.schedule-btn:hover {
+  background: linear-gradient(90deg, #1565c0 0%, #00bfa5 100%);
+}
+.arrow {
+  font-size: 18px;
+}
+@media (max-width: 900px) {
+  .scheduling-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 0;
+  }
+  .property-card, .schedule-card {
+    width: 100%;
+    max-width: 500px;
+  }
+}

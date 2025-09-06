@@ -1,0 +1,33 @@
+<div class="scheduling-wrapper">
+  <div class="property-card">
+    <img class="property-image" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Apartment" />
+    <div class="property-info">
+      <div class="info-row">
+        <span class="icon">📍</span>
+        <span class="label">Address</span>
+      </div>
+      <div class="info-value">123 Main St, Pittsburgh, PA 12345</div>
+      <hr />
+      <div class="info-row">
+        <span class="icon">👤</span>
+        <span class="label">Your Rental Agent</span>
+      </div>
+      <div class="info-value">John Doe</div>
+    </div>
+  </div>
+  <div class="schedule-card">
+    <div class="schedule-header">
+      <span class="header-icon">🔥</span>
+      <span class="header-text">ONLY 3 UNITS LEFT! Book now & get priority viewing + waived application fee!</span>
+    </div>
+    <div class="schedule-body">
+      <div class="earliest-label">🟢 Earliest Available</div>
+      <div class="schedule-date">Wednesday, July 23, 2025</div>
+      <div class="timezone">Time Zone: EDT <span class="show-more">Show More Dates</span></div>
+      <div class="slots-grid">
+        <button *ngFor="let slot of schedule?.slots" class="slot-btn" [class.selected]="selectedSlot === slot" (click)="selectSlot(slot)">{{ slot }}</button>
+      </div>
+      <button class="schedule-btn">SCHEDULE NOW <span class="arrow">→</span></button>
+    </div>
+  </div>
+</div>
