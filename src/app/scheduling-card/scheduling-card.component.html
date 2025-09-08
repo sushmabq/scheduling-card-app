@@ -32,10 +32,11 @@
         <input *ngIf="showDatePicker" type="date" class="date-picker" (change)="onDatePicked($event)" [min]="today | date:'yyyy-MM-dd'" />
       </div>
       <div class="slots-grid">
-        <button *ngFor="let slot of slots" class="slot-btn" [class.early]="slot === '9:00 AM' || slot === '10:00 AM' || slot === '11:00 AM'" [class.selected]="selectedSlot === slot" [class.disabled]="isSlotDisabled(slot)" (click)="selectSlot(slot)" [disabled]="isSlotDisabled(slot)">
-          <span [class.strikeout]="isSlotDisabled(slot)">{{ slot }}</span>
+        <button *ngFor="let slot of slots" class="slot-btn" [class.early]="slot === '9:00 AM' || slot === '10:00 AM' || slot === '11:00 AM'" [class.selected]="selectedSlot === slot" [class.disabled]="isSlotDisabled(slot) || isSlotBooked(slot)" (click)="selectSlot(slot)" [disabled]="isSlotDisabled(slot) || isSlotBooked(slot)">
+          <span [class.strikeout]="isSlotDisabled(slot) || isSlotBooked(slot)">{{ slot }}</span>
+    <span *ngIf="isSlotBooked(slot)" class="booked-label"><span class="booked-icon">✔️</span> Booked</span>
           <span *ngIf="slot === '9:00 AM' || slot === '10:00 AM' || slot === '11:00 AM'" class="badge">⭐ Best</span>
-          <span *ngIf="slotAvailability[slot]" class="slot-left">{{ slotAvailability[slot] }} left</span>
+          <span *ngIf="slotAvailability[slot] && !isSlotBooked(slot)" class="slot-left">{{ slotAvailability[slot] }} left</span>
         </button>
       </div>
       <div *ngIf="selectedSlot" class="confirmation-box">
